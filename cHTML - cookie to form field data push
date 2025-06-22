@@ -1,0 +1,24 @@
+<script>
+(function() {
+  function getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  }
+
+  var utmFields = {
+    utm_id: 'input[name="id"]',
+    utm_source: 'input[name="source"]',
+    utm_medium: 'input[name="medium"]',
+    utm_campaign: 'input[name="campaign-name"]'
+  };
+
+  for (var key in utmFields) {
+    var field = document.querySelector(utmFields[key]);
+    var value = getCookie(key);
+    if (field && value) {
+      field.value = value;
+    }
+  }
+})();
+</script>
